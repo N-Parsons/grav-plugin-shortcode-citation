@@ -1,6 +1,6 @@
 name: Shortcode Citations
 version: 0.1.2
-description: "Provides teh ability to add citations via shortcodes such as [cite=id /]"
+description: "Provides the ability to add citations via shortcodes such as [cite=id /]"
 icon: superscript
 author:
   name: Nathan Parsons
