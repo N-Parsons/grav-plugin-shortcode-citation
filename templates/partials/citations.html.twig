@@ -32,7 +32,7 @@
         {% if reference %}
           {% include 'partials/citations/'~reference.type~'.html.twig' with { 'ref': reference } %}
         {% else %}
-          <li><strong>ERROR:</strong> Missing or incorrect citation ID ("{{ citeId }}")</li>
+          <li id="cite-{{ citeId }}"><strong>ERROR:</strong> Missing or incorrect citation ID ("{{ citeId }}")</li>
         {% endif %}
       {% endfor %}
     </ol>
