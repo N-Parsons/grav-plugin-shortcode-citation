@@ -1,0 +1,41 @@
+name: Shortcode Citations
+version: 0.1.0
+description: "Provides"
+icon: superscript
+author:
+  name: Nathan Parsons
+  email: nathan@tantalum.blue
+  url: https://tantalum.blue
+license: MIT
+
+dependencies:
+  - { name: shortcode-core }
+
+form:
+  validation: strict
+  fields:
+    enabled:
+      type: toggle
+      label: Plugin status
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+    builtin_css:
+      type: toggle
+      label: Builtin CSS
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+    heading_text:
+      type: text
+      label: Heading text
+      placeholder: "References"
+

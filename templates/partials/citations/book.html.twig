@@ -1,0 +1,23 @@
+<li id="{{ ref.id }}">
+
+{% if ref.author %}
+  <span class="ref-author">{{ ref.author }}</span>
+{% endif %}
+
+{% if ref.year %}
+  <span class="ref-year">({{ ref.year }})</span>
+{% endif %}
+
+{% if ref.title %}
+  <span class="ref-title">"{{ ref.title }}"</span>
+{% endif %}
+
+{% if ref.pages %}
+  <span class="ref-pages">p{{ ref.pages|replace({"-": "–", "--": "–"}) }}</span>
+{% endif %}
+
+{% if ref.url %}
+  <span class="ref-link">[<a class="ref-url" href="{{ ref.url }}">Link to book</a>]</span>
+{% endif %}
+
+</li>

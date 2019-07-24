@@ -1,0 +1,19 @@
+<li id="{{ ref.id }}">
+
+{% if ref.author %}
+  <span class="ref-author">{{ ref.author }}</span>
+{% endif %}
+
+{% if ref.year %}
+  <span class="ref-year">({{ ref.year }})</span>
+{% endif %}
+
+{% if ref.title %}
+  <span class="ref-title">"{{ ref.title }}"</span>
+{% endif %}
+
+{% if ref.url %}
+  <span class="ref-link">[<a class="ref-url" href="{{ ref.url }}" >{{ ref.url|truncate(32, true)|raw }}</a>]</span>
+{% endif %}
+
+</li>

@@ -1,0 +1,41 @@
+{# 'citations' is an ordered list of references provided by the plugin  #}
+
+{% if config.plugins["shortcode-citation"]["builtin_css"] %}
+  {% do assets.addCss("plugins://shortcode-citation/css/citations.css") %}
+{% endif %}
+
+
+{% set reference_list = page.header.references %}
+{% set references = {} %}
+
+{% for ref in reference_list %}
+  {% set references = references|merge({(ref["id"]): ref}) %}
+{% endfor %}
+
+
+{# 'heading' comes via Shortcode #}
+{% if not heading is same as("false") %}
+  {% set heading_text = heading ?: config['plugins.shortcode-citation.heading_text'] ?: "References" %}
+{% endif %}
+
+
+{% if citations %}
+  <section class="references">
+    {% if heading_text %}
+      <h2>{{ heading_text }}</h2>
+    {% endif %}
+
+    <ol>
+      {% for citeId in citations %}
+        {% set reference = references[citeId] %}
+
+        {% if reference %}
+          {% include 'partials/citations/'~reference.type~'.html.twig' with { 'ref': reference } %}
+        {% else %}
+          <li><strong>ERROR:</strong> Missing or incorrect citation ID ("{{ citeId }}")</li>
+        {% endif %}
+      {% endfor %}
+    </ol>
+
+  </section>
+{% endif %}

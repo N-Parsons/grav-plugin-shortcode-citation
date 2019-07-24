@@ -1,0 +1,15 @@
+.references {
+  margin-top: 1.5rem;
+}
+
+.references .ref-title {
+  font-style: italic;
+}
+
+.references li span:not(:last-child)::after{
+  content: ",";
+}
+
+.references li span:last-child::after{
+  content: ".";
+}

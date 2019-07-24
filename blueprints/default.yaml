@@ -1,0 +1,61 @@
+'@extends':
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          fields:
+            references:
+              type: fieldset
+              title: References
+              info: "(shortcode-citation)"
+              icon: superscript
+              collapsible: true
+              collapsed: true
+              fields:
+                header.references:
+                  type: list
+                  style: vertical
+                  collapsed: true
+                  fields:
+                    .id:
+                      type: text
+                      label: ID
+                      validate:
+                        required: true
+                    .type:
+                      type: select
+                      label: Reference type
+                      options:
+                        book: Book
+                        journal: Journal article
+                        web: Website/webpage
+                    .title:
+                      type: text
+                      label: Title
+                    .author:
+                      type: text
+                      label: Author
+                    .year:
+                      type: text
+                      label: Year
+                    .url:
+                      type: text
+                      label: URL
+                    .journal:
+                      type: text
+                      label: Journal
+                    .volume:
+                      type: text
+                      label: Journal volume
+                    .pages:
+                      type: text
+                      label: Page numbers (x-y)
+
+              
