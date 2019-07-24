@@ -1,6 +1,8 @@
 # Grav Shortcode Citation Plugin
 
-## About
+This plugin for [Grav](https://getgrav.org) adds the ability to insert citations into pages via shortcodes (eg. `[cite=id /]`).
+
+## Example output
 
 ![Example output for shortcode-citation](assets/references_example.png)
 
@@ -12,7 +14,7 @@ Typically a plugin should be installed via [GPM](http://learn.getgrav.org/advanc
 $ bin/gpm install shortcode-citation
 ```
 
-Alternatively it can be installed via the [Admin Plugin](http://learn.getgrav.org/admin-panel/plugins)
+Alternatively it can be installed via the [Admin Plugin](http://learn.getgrav.org/admin-panel/plugins).
 
 
 ## Usage
@@ -71,14 +73,14 @@ form:
 
 ### Formatting new reference types
 
-References are formatted via Twig templates, based on the name of the key for the reference type. For the above blueprint, these files would be called `new_key_name.html.twig` and `another_key_name.html.twig`, and saved at `partials/citations/`.
+References are formatted via Twig templates, based on the name of the key for the reference type. For the above blueprint, these files would be called `new_key_name.html.twig` and `another_key.html.twig`, and saved at `partials/citations/`.
 
 
 ## Related projects
 
 If this plugin doesn't fit your needs, try one of these other plugins:
 - [bibliography](https://github.com/OleVik/grav-plugin-biblatex)
-- [biblatex](https://github.com/OleVik/grav-plugin-biblatex).
+- [biblatex](https://github.com/OleVik/grav-plugin-biblatex)
 
 
 ## License
