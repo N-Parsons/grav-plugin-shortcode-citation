@@ -4,8 +4,11 @@ description: "Provides teh ability to add citations via shortcodes such as [cite
 icon: superscript
 author:
   name: Nathan Parsons
-  email: nathan@tantalum.blue
+  email: github@tantalum.blue
   url: https://tantalum.blue
+keywords: cite, citation, reference, academic, bibliography, shortcode
+homepage: https://github.com/n-parsons/grav-plugin-shortcode-citation
+bugs: https://github.com/n-parsons/grav-plugin-shortcode-citation/issues
 license: MIT
 
 dependencies:
