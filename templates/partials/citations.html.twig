@@ -27,7 +27,7 @@
 
 
 {# 'heading' comes via Shortcode #}
-{% if not heading is same as("false") %}
+{% if not heading is same as("false") and not heading == 0 %}
   {% set heading_text = heading ?: page_config.heading_text ?: plugin_config.heading_text ?: "References" %}
 {% endif %}
 
