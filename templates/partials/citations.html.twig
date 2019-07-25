@@ -1,8 +1,14 @@
-{# 'citations' is an ordered list of references provided by the plugin  #}
+{# 'citations' is an ordered list of references provided by the plugin #}
+{# Config resolution is handled here so that other templates can 'include' this one #}
 
-{% if config.plugins["shortcode-citation"]["builtin_css"] %}
+{% set page_config = page.header.shortcode_citation %}
+{% set plugin_config = config.plugins["shortcode-citation"] %}
+
+
+{% if plugin_config.builtin_css %}
   {% do assets.addCss("plugins://shortcode-citation/css/citations.css") %}
 {% endif %}
+
 
 
 {% set reference_list = page.header.references %}
@@ -14,9 +20,36 @@
 {% endfor %}
 
 
+{# Alphabetise/Reorder references if required #}
+{% if reorder ?: page_config.reorder_uncited ?: plugin_config.reorder_uncited %}
+  {% set references = references|ksort %}
+{% endif %}
+
+
 {# 'heading' comes via Shortcode #}
 {% if not heading is same as("false") %}
-  {% set heading_text = heading ?: config['plugins.shortcode-citation.heading_text'] ?: "References" %}
+  {% set heading_text = heading ?: page_config.heading_text ?: plugin_config.heading_text ?: "References" %}
+{% endif %}
+
+
+{% set items = items ?: page_config.items ?: plugin_config.items %}
+
+
+{% if items is same as("all") %}
+  {# Append the keys for uncited works #}
+  {% for key in references|keys %}
+    {% if key[4:] not in citations %}
+      {% set citations = citations|merge([key[4:]]) %}
+    {% endif %}
+  {% endfor %}
+{% elseif items is same as("uncited") %}
+  {% set uncited = [] %}
+  {% for key in references|keys %}
+    {% if key[4:] not in citations %}
+      {% set uncited = uncited|merge([key[4:]]) %}
+    {% endif %}
+  {% endfor %}
+  {% set citations = uncited %}
 {% endif %}
 
 

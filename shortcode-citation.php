@@ -76,7 +76,6 @@ class CitationManager
 
     public function getCitationNumber($citeId)
     {
-        
         if ( in_array($citeId, $this->citations) ) {
             $citeNum = array_search($citeId, $this->citations) + 1;
         } else {
