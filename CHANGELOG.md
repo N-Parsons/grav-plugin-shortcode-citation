@@ -1,3 +1,10 @@
+# v0.2.0
+## 26-07-2019
+
+1. [](#new)
+    - Added option for listing only cited, uncited, or all references from the page.
+    - Added option for whether to reorder uncited works alphabetically by ID.
+
 # v0.1.4
 ## 25-07-2019
 
