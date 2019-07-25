@@ -13,7 +13,7 @@ class CitationShortcode extends Shortcode
         $citeNum = $this->grav['citations']->getCitationNumber($citeId);
         return '<a class="citation" href="#cite-'.$citeId.'">['.$citeNum.']</a>';
       } else {
-        // Get variables        
+        // Get variables
         $vars = array(
           "page" => $this->grav["page"],
           "citations" => $this->grav['citations']->getCitations(),

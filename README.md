@@ -42,7 +42,7 @@ The heading for the reference section defaults to "References", but can be set i
 
 I welcome PRs for internationalisation and addition of new citation types.
 
-However, if you prefer to create new citations types locally, you can extending the plugin without needing to fork it by following the instructions below.
+However, if you prefer to create new citations types locally, you can extend the plugin without needing to fork it by following the instructions below.
 
 ### Adding reference types
 

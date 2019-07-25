@@ -9,7 +9,8 @@
 {% set references = {} %}
 
 {% for ref in reference_list %}
-  {% set references = references|merge({(ref["id"]): ref}) %}
+  {# Adding "ref-" avoids issues with numeric IDs acting as indices #}
+  {% set references = references|merge({("ref-"~ref["id"]): ref}) %}
 {% endfor %}
 
 
@@ -27,7 +28,7 @@
 
     <ol>
       {% for citeId in citations %}
-        {% set reference = references[citeId] %}
+        {% set reference = references["ref-"~citeId] %}
 
         {% if reference %}
           {% include 'partials/citations/'~reference.type~'.html.twig' with { 'ref': reference } %}
