@@ -1,3 +1,9 @@
+# v0.1.4
+## 25-07-2019
+
+1. [](#bugfix)
+    - Fixed bug related to numeric IDs.
+
 # v0.1.3
 ## 24-07-2019
 
