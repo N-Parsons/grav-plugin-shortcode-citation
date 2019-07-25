@@ -37,6 +37,22 @@ The reference list can be printed either by adding `[cite /]` with no key id, or
 
 The heading for the reference section defaults to "References", but can be set in the plugin config via `heading_text` or as an option in the shortcode used to print it (eg. `[cite heading=Bibliography /]`). The title can also be disabled by setting the heading text to "false" via the same methods.
 
+#### Configuring the reference list via shortcode:
+
+Configuration options set in the shortcode override those in the plugin config and page header.
+
+- "heading": (text) Sets the text of the heading. Can be set to "false" or "0" to disable it.
+- "items": ("cited", "all", "uncited") Determines the works to include in the reference list.
+- "reorder": (bool) Whether to reorder uncited works alphabetically (by ID). Set this to "false" or "0" to disable reordering and list uncited works in the order defined in the page header.
+
+#### Configuring the reference list via plugin/page config:
+
+All of these options can be set in the plugin config to affect the whole site, or on a page-level via the "Option" tab (or as entries under `shortcode_citation` in the page header).
+
+- "heading_text": (text) Sets the text of the heading. Can be set to "false" to disable it.
+- "items": ("cited", "all", "uncited") Determines the works to include in the reference list.
+- "reorder_uncited": (bool) Whether to reorder uncited works alphabetically (by ID). Set this to "false" to disable reordering and list uncited works in the order defined in the page header.
+
 
 ## Customisation and extension
 
