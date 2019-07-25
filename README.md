@@ -21,7 +21,7 @@ Alternatively it can be installed via the [Admin Plugin](http://learn.getgrav.or
 
 ### Adding references
 
-The plugin adds a References section to pages inheriting the "default" blueprint. The references are stored per-page and only those that are cited in the page will be listed in the reference section. The order of the references in the list doesn't matter; they will always print in the order that they are cited in the text. The id entered **must** be unique.
+The plugin adds a References section to pages inheriting the "default" blueprint. The references are stored per-page and by default only those that are cited in the page will be listed in the reference section. The order of the references in the list doesn't matter; they will always print in the order that they are cited in the text. The id entered **must** be unique.
 
 This plugin is mostly to make citations easier, so the reference printing logic is currently quite simplistic; text is mostly printed as-is. This means that you are responsible for consistency of things like the format of author names, but also adds some flexibility to bend the rules a little bit. If a field is left empty or is not considered relevant for that reference type, it will be ignored.
 
