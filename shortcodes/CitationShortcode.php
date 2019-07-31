@@ -1,6 +1,8 @@
 <?php
 namespace Grav\Plugin\Shortcodes;
 
+use Grav\Common\Grav;
+use Grav\Common\Plugin;
 use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 
 class CitationShortcode extends Shortcode
@@ -10,8 +12,15 @@ class CitationShortcode extends Shortcode
     $this->shortcode->getHandlers()->add('cite', function(ShortcodeInterface $sc) {
       $citeId = $sc->getParameter('cite', $this->getBbCode($sc));
       if ($citeId) {
-        $citeNum = $this->grav['citations']->getCitationNumber($citeId);
-        return '<a class="citation" href="#cite-'.$citeId.'">['.$citeNum.']</a>';
+        // Get the citation manager
+        $citations = $this->grav['citations'];
+
+        // Get the URL and citation number
+        $url = $citations->getUrl();
+        $citeNum = $citations->getCitationNumber($citeId);
+
+        // Return the citation link
+        return '<a class="citation" href="'.$url.'#cite-'.$citeId.'">['.$citeNum.']</a>';
       } else {
         // Get variables
         $vars = array(
