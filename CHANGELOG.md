@@ -1,9 +1,12 @@
 # v0.2.0
-## 26-07-2019
+## 31-07-2019
 
 1. [](#new)
     - Added option for listing only cited, uncited, or all references from the page.
     - Added option for whether to reorder uncited works alphabetically by ID.
+
+2. [](#bugfix)
+    - Fixed issue with citations in blog posts displaying incorrectly in the listing.
 
 # v0.1.4
 ## 25-07-2019
