@@ -10,8 +10,8 @@ This plugin for [Grav](https://getgrav.org) adds the ability to insert citations
 
 Typically a plugin should be installed via [GPM](http://learn.getgrav.org/advanced/grav-gpm) (Grav Package Manager):
 
-```
-$ bin/gpm install shortcode-citation
+```sh
+bin/gpm install shortcode-citation
 ```
 
 Alternatively it can be installed via the [Admin Plugin](http://learn.getgrav.org/admin-panel/plugins).
@@ -38,6 +38,25 @@ The reference list can be printed either by adding `[cite /]` with no key id, or
 The heading for the reference section defaults to "References", but can be set in the plugin config via `heading_text` or as an option in the shortcode used to print it (eg. `[cite heading=Bibliography /]`). The title can also be disabled by setting the heading text to "false" via the same methods.
 
 
+## Integration into Twig templates
+
+The citation manager is made available in Twig via the `citations` variable. To get an ordered array of citations, simply call `citations.getCitations()`.
+
+### Using citations in a blog
+
+When using citations in a blog there are a couple of extra methods that are useful. The first manually resets the citation list, so that the citation numbers start counting from 1 for each post on the page, rather than just increasing throughout the parent page. The second sets the url to prepend to the anchor links used by citations so that the links still work on the listing page; this is only needed in the blog list item template, so that the links on the child page are still just to the ID.
+
+- `citations.reset()`: Resets the citations list and anchor URL.
+- `citations.setUrl()`: Sets the URL to prepend to the anchor link.
+
+Perhaps the easiest way to use these methods is to add the following snippet to the start of your blog list item template. (**Note:** `reset` should be performed before `setUrl`, since the former resets the latter).
+
+```twig
+{% do citations.reset() %}
+{% do citations.setUrl(page.route) %}
+```
+
+
 ## Customisation and extension
 
 I welcome PRs for internationalisation and addition of new citation types.
@@ -48,7 +67,7 @@ However, if you prefer to create new citations types locally, you can extend the
 
 You can add to the list of reference types by creating your own `blueprints/default.yaml` that adds to the list of options, using the blueprint below as a template.
 
-```
+```yaml
 '@extends':
   type: default
   context: blueprints://pages
@@ -79,7 +98,8 @@ References are formatted via Twig templates, based on the name of the key for th
 ## Related projects
 
 If this plugin doesn't fit your needs, try one of these other plugins:
-- [bibliography](https://github.com/OleVik/grav-plugin-biblatex)
+
+- [bibliography](https://github.com/OleVik/grav-plugin-bibliography)
 - [biblatex](https://github.com/OleVik/grav-plugin-biblatex)
 
 

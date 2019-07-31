@@ -6,10 +6,24 @@
   font-style: italic;
 }
 
-.references li span:not(:last-child)::after{
-  content: ",";
+.references .cite-error {
+  font-weight: bold;
 }
 
-.references li span:last-child::after{
-  content: ".";
+.references .highlight li:target {
+  background: #0002;
+  
+}
+
+.references li {
+  padding: 0.1rem 0.25rem;
+}
+
+.references li + li {
+  margin-top: -0.05rem;
+}
+
+.references ol {
+  list-style: decimal inside;
+  margin-left: 1rem;
 }
