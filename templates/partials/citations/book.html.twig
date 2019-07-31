@@ -1,23 +1,35 @@
-<li id="cite-{{ ref.id }}">
+{% set parts = [] %}
+
 
 {% if ref.author %}
-  <span class="ref-author">{{ ref.author }}</span>
+  {% set parts = parts|merge([
+    '<span class="ref-author">' ~ ref.author ~ '</span>'
+    ]) %}
 {% endif %}
 
 {% if ref.year %}
-  <span class="ref-year">({{ ref.year }})</span>
+  {% set parts = parts|merge([
+    '<span class="ref-year">(' ~ ref.year ~ ')</span>'
+    ]) %}
 {% endif %}
 
 {% if ref.title %}
-  <span class="ref-title">"{{ ref.title }}"</span>
+  {% set parts = parts|merge([
+    '<span class="ref-title">"' ~ ref.title ~ '"</span>'
+    ]) %}
 {% endif %}
 
 {% if ref.pages %}
-  <span class="ref-pages">p{{ ref.pages|replace({"-": "–", "--": "–"}) }}</span>
+  {% set parts = parts|merge([
+    '<span class="ref-pages">p' ~ ref.pages|replace({"-": "–", "--": "–"}) ~ '</span>'
+    ]) %}
 {% endif %}
 
 {% if ref.url %}
-  <span class="ref-link">[<a class="ref-url" href="{{ ref.url }}">Link to book</a>]</span>
+  {% set parts = parts|merge([
+    '<span class="ref-link">[<a class="ref-url" href="' ~ ref.url  ~'" >Link to book</a>]</span>'
+  ]) %}
 {% endif %}
 
-</li>
+
+{{ parts|join(", ")|raw }}.

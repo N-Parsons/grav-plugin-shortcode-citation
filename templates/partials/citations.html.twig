@@ -9,6 +9,7 @@
   {% do assets.addCss("plugins://shortcode-citation/css/citations.css") %}
 {% endif %}
 
+{% set cites = citations.getCitations() %}
 
 
 {% set reference_list = page.header.references %}
@@ -53,21 +54,27 @@
 {% endif %}
 
 
-{% if citations %}
+{% if cites %}
   <section class="references">
     {% if heading_text %}
       <h2>{{ heading_text }}</h2>
     {% endif %}
 
     <ol>
-      {% for citeId in citations %}
+      {% for citeId in cites %}
         {% set reference = references["ref-"~citeId] %}
 
-        {% if reference %}
-          {% include 'partials/citations/'~reference.type~'.html.twig' with { 'ref': reference } %}
-        {% else %}
-          <li id="cite-{{ citeId }}"><strong>ERROR:</strong> Missing or incorrect citation ID ("{{ citeId }}")</li>
-        {% endif %}
+        {% spaceless %}
+          {% if reference %}
+            <li id="cite-{{ citeId }}">
+              {% include 'partials/citations/'~reference.type~'.html.twig' with { 'ref': reference } %}
+            </li>
+          {% else %}
+            <li id="cite-{{ citeId }}">
+              <span class="cite-error">ERROR:</span> Missing or incorrect citation ID ("{{ citeId }}")
+            </li>
+          {% endif %}
+        {% endspaceless %}
       {% endfor %}
     </ol>
 

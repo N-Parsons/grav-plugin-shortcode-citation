@@ -4,6 +4,9 @@ namespace Grav\Plugin;
 use \Grav\Common\Plugin;
 use \RocketTheme\Toolbox\Event\Event;
 
+use ShortcodeCitation\CitationManager;
+
+
 class ShortcodeCitationPlugin extends Plugin
 {
     protected $citations;
@@ -13,6 +16,8 @@ class ShortcodeCitationPlugin extends Plugin
      */
     public static function getSubscribedEvents()
     {
+        require_once(__DIR__."/classes/CitationManager.php");
+
         return [
             'onPluginsInitialized' => ['onPluginsInitialized', 0],
             'onShortcodeHandlers' => ['onShortcodeHandlers', 0],
@@ -47,7 +52,7 @@ class ShortcodeCitationPlugin extends Plugin
     }
 
     /**
-     * Initialize configuration
+     * Register shortcodes
      */
     public function onShortcodeHandlers()
     {
@@ -55,39 +60,10 @@ class ShortcodeCitationPlugin extends Plugin
     }
 
     /**
-     * Add the citations as a twig variable
-     * (once citations have been collected)
+     * Make the citation manager available via a twig variable
      */
     public function onPageContent()
     {
-        $this->grav["twig"]->twig_vars["citations"] = $this->citations->getCitations();
-    }
-}
-
-
-class CitationManager
-{
-    private $citations;
-
-    public function __construct()
-    {
-        $this->citations = [];
-    }
-
-    public function getCitationNumber($citeId)
-    {
-        if ( in_array($citeId, $this->citations) ) {
-            $citeNum = array_search($citeId, $this->citations) + 1;
-        } else {
-            array_push($this->citations, $citeId);
-            $citeNum = count($this->citations);
-        }
-        
-        return $citeNum;
-    }
-
-    public function getCitations()
-    {
-        return $this->citations;
+        $this->grav["twig"]->twig_vars["citations"] = $this->citations;
     }
 }

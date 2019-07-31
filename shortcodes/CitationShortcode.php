@@ -1,6 +1,8 @@
 <?php
 namespace Grav\Plugin\Shortcodes;
 
+use Grav\Common\Grav;
+use Grav\Common\Plugin;
 use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 
 class CitationShortcode extends Shortcode
@@ -8,11 +10,17 @@ class CitationShortcode extends Shortcode
   public function init()
   {
     $this->shortcode->getHandlers()->add('cite', function(ShortcodeInterface $sc) {
-      $options = $this->getBbCode($sc);
-      $citeId = $sc->getParameter('cite', $options);
-      if (isset($citeId)) {
-        $citeNum = $this->grav['citations']->getCitationNumber($citeId);
-        return '<a class="citation" href="#cite-'.$citeId.'">['.$citeNum.']</a>';
+      $citeId = $sc->getParameter('cite', $this->getBbCode($sc));
+      if ($citeId) {
+        // Get the citation manager
+        $citations = $this->grav['citations'];
+
+        // Get the URL and citation number
+        $url = $citations->getUrl();
+        $citeNum = $citations->getCitationNumber($citeId);
+
+        // Return the citation link
+        return '<a class="citation" href="'.$url.'#cite-'.$citeId.'">['.$citeNum.']</a>';
       } else {
         // Determine the boolean value of 'reorder' if set
         $reorder = $sc->getParameter('reorder', $options);
