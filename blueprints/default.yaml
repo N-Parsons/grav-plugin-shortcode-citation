@@ -58,4 +58,31 @@ form:
                       type: text
                       label: Page numbers (x-y)
 
-              
+        options:
+          fields:
+            shortcode-citation:
+              type: section
+              title: Shortcode Citation
+              fields:
+                header.shortcode-citation.heading_text:
+                  type: text
+                  label: Heading text
+                  placeholder: "References"
+                header.shortcode-citation.items:
+                  type: select
+                  label: Works to reference
+                  help: 
+                  options:
+                    "cited": Only cited works
+                    "all": All works
+                    "uncited": Only uncited works
+                header.shortcode-citation.reorder_uncited:
+                  type: toggle
+                  label: Order uncited works alphabetically (by ID)
+                  highlight: 1
+                  default: 1
+                  options:
+                    1: PLUGIN_ADMIN.ENABLED
+                    0: PLUGIN_ADMIN.DISABLED
+                  validate:
+                    type: bool

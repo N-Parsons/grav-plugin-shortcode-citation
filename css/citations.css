@@ -10,9 +10,9 @@
   font-weight: bold;
 }
 
-.references .highlight li:target {
+.references li:target {
   background: #0002;
-  
+
 }
 
 .references li {

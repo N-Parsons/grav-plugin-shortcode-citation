@@ -1,5 +1,5 @@
 name: Shortcode Citations
-version: 0.1.4
+version: 0.2.0
 description: "Provides the ability to add citations via shortcodes such as [cite=id /]"
 icon: superscript
 author:
@@ -23,8 +23,8 @@ form:
       highlight: 1
       default: 1
       options:
-        1: Enabled
-        0: Disabled
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
     builtin_css:
@@ -33,12 +33,30 @@ form:
       highlight: 1
       default: 1
       options:
-        1: Enabled
-        0: Disabled
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
     heading_text:
       type: text
       label: Heading text
       placeholder: "References"
+    items:
+      type: select
+      label: Works to reference
+      help: 
+      options:
+        "cited": Only cited works
+        "all": All works
+        "uncited": Only uncited works
+    reorder_uncited:
+      type: toggle
+      label: Order uncited works alphabetically (by ID)
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
 
