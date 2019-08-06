@@ -1,8 +1,6 @@
 <?php
 namespace Grav\Plugin\Shortcodes;
 
-use Grav\Common\Grav;
-use Grav\Common\Plugin;
 use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 
 class CitationShortcode extends Shortcode
